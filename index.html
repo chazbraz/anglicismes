@@ -195,6 +195,18 @@
     -webkit-box-orient: vertical;
   }
 
+
+  .card-category {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    margin-top: 0.7rem;
+    flex-shrink: 0;
+  }
   .card-deco {
     position: absolute;
     bottom: 1.1rem;
@@ -311,49 +323,74 @@
 
 <script>
 const DECK = [
-  { front: "absentéisme",  back: "absentisme",                          note: "" },
-  { front: "bacon",        back: "bacon",                               note: "Prononcé « bas con »." },
-  { front: "bazooka",      back: "basouque",                            note: "La majeure partie des noms en « a » du français sont des emprunts (cinéma, opéra, visa, agenda, sofa, extra, panorama…)" },
-  { front: "bermuda",      back: "bermude",                             note: "La majeure partie des noms en « a » du français sont des emprunts (cinéma, opéra, visa, agenda, sofa, extra, panorama…)" },
-  { front: "bifteck",      back: "rôt de biffe",                        note: "Un vieil anglicisme emprunté dès le XVIIIe siècle sous la forme Beeft Steks." },
-  { front: "bigbang",      back: "boum originel",                       note: "" },
-  { front: "boost",        back: "bouste ou boût",                      note: "" },
-  { front: "brownie",      back: "brounie",                             note: "Évidemment sans « s » au singulier." },
-  { front: "bug",          back: "bogue",                               note: "" },
-  { front: "cafeteria",    back: "caféterie",                           note: "Un emprunt à l'anglais américain tout récent (1939 — « établissement où l'on peut prendre un repas rapide »)." },
-  { front: "cash",         back: "de la casse, payer casse",            note: "Cash vient de l'ancien français casse, qui référait à la caisse d'un marchand." },
-  { front: "challenge",    back: "chalenge",                            note: "Prononcé « chat l'ange ». Un mot pendule : un emprunt à l'anglais qui était lui-même un emprunt au français." },
-  { front: "chip",         back: "chipe",                               note: "Chipe est un vieux mot qui signifiait « petit morceau, rognure d'étoffe » (cf. chiffe, chiffon) et qui a donné « chiper ». Évidemment sans « s » au singulier." },
-  { front: "cookie",       back: "couquie",                             note: "Évidemment sans « s » au singulier." },
-  { front: "crumble",      back: "cromble",                             note: "" },
-  { front: "doughnut",     back: "beignet à trou",                      note: "" },
-  { front: "football",     back: "balle-au-pied",                       note: "" },
-  { front: "glamour",      back: "grammaire",                           note: "" },
-  { front: "grammophone",  back: "lettre-son",                          note: "" },
-  { front: "hamburger",    back: "hambourgeois",                        note: "" },
-  { front: "héler",        back: "saluer",                              note: "Un emprunt à l'anglais « hail » bien déguisé." },
-  { front: "jet",          back: "jet",                                 note: "Prononcé à la française. Le jet anglais vient lui-même d'un emprunt au français." },
-  { front: "kazoo",        back: "mirliton, flûte à l'oignon, casou",   note: "Mirliton et flûte à l'oignon sont les vieux noms de cet instrument. Kazoo est une marque." },
-  { front: "management",   back: "manégement",                          note: "Emprunté au français « manège », qui référait à l'entraînement des chevaux." },
-  { front: "manager",      back: "manégeur",                            note: "Emprunté au français « manège », qui référait à l'entraînement des chevaux." },
-  { front: "microphone",   back: "minison",                             note: "Et pourquoi on ne franciserait pas le grec également, tant qu'on y est ?" },
-  { front: "New York",     back: "La Nouvelle-Évreux",                  note: "York vient du vieil-anglais Eoforwic, dérivé du celtique Eborakon (« le lieu de l'if »). Évreux est dérivé du nom gaulois des Éburovices, dont le nom venait d'eburo, l'if." },
-  { front: "parking",      back: "parc",                                note: "Park est un emprunt au vieux français « parc »." },
-  { front: "Pedigree",     back: "pied de grue",                        note: "" },
-  { front: "pullover",     back: "chandail",                            note: "L'étymologie de chandail est remarquable : abréviation de (mar)chand d'ail, nom donné au tricot porté par les vendeurs de légumes aux Halles de Paris." },
-  { front: "puzzle",       back: "peuseul",                             note: "" },
-  { front: "shampooing",   back: "champoin",                            note: "" },
-  { front: "sponsor",      back: "sponseur",                            note: "On peut également utiliser « parrain, marraine », ou la recommandation officielle : « commanditaire »." },
-  { front: "sport",        back: "déport",                              note: "Sport vient de l'ancien français « deport »." },
-  { front: "squatter",     back: "escouater",                           note: "" },
-  { front: "squatteur",    back: "escouateur",                          note: "" },
-  { front: "steak",        back: "stèque",                              note: "" },
-  { front: "steward",      back: "sénéchal",                            note: "" },
-  { front: "supporter",    back: "supporteur",                          note: "L'anglicisme « supporter » vient du français supporter." },
-  { front: "sweat-shirt",  back: "chandail de déport",                  note: "" },
-  { front: "toast",        back: "tostée",                              note: "Toast est un emprunt au français toster." },
-  { front: "toaster",      back: "rôtir",                               note: "" },
-  { front: "Washington",   back: "Lave-ville",                          note: "" },
+  { front: "absentéisme",      cat: "",              back: "absentisme",                              note: "Ce mot aux airs bien français vient de l'expression anglaise « absentee landlord », ces aristocrates qui ne paraissaient jamais sur leurs terres." },
+  { front: "bacon",            cat: "Gastronomie",   back: "bacon [prononcé « bas con »]",            note: "Bacon est un emprunt au vieux français bacon." },
+  { front: "basketball",       cat: "Déport",        back: "balle-au-panier",                         note: "" },
+  { front: "baskets",          cat: "Mode",          back: "baquets",                                 note: "" },
+  { front: "bazooka",          cat: "",              back: "basouque",                                note: "La majeure partie des noms en « a » du français sont des emprunts (cinéma, opéra, visa, agenda, sofa, extra, panorama…)" },
+  { front: "bermuda",          cat: "Mode",          back: "bermude",                                 note: "La majeure partie des noms en « a » du français sont des emprunts (cinéma, opéra, visa, agenda, sofa, extra, panorama…)" },
+  { front: "bifteck",          cat: "Gastronomie",   back: "rôt de biffe",                            note: "Un vieil anglicisme emprunté dès le XVIIIe siècle sous la forme Beeft Steks." },
+  { front: "bigbang",          cat: "Science",       back: "boum originel",                           note: "" },
+  { front: "boost",            cat: "",              back: "bouste ou boût",                          note: "" },
+  { front: "brownie",          cat: "Gastronomie",   back: "un bruni",                                note: "Évidemment sans « s » au singulier." },
+  { front: "bug",              cat: "Informatique",  back: "bogue",                                   note: "" },
+  { front: "cafeteria",        cat: "Gastronomie",   back: "caféterie",                               note: "Un emprunt à l'anglais américain tout récent (1939 — « établissement où l'on peut prendre un repas rapide »)." },
+  { front: "cash",             cat: "Économie",      back: "de la casse, payer casse",                note: "Cash vient de l'ancien français casse, qui référait à la caisse d'un marchand." },
+  { front: "challenge",        cat: "",              back: "chalenge [prononcé « chat l'ange »]",     note: "Challenge est un mot pendule : un emprunt à l'anglais qui était lui-même un emprunt au français." },
+  { front: "cheeseburger",     cat: "Gastronomie",   back: "bourgeois au fromage, chisebourget",      note: "" },
+  { front: "chip",             cat: "Gastronomie",   back: "chipe",                                   note: "Chipe est un vieux mot qui signifiait « petit morceau, rognure d'étoffe » (cf. chiffe, chiffon) et qui a donné « chiper ». Évidemment sans « s » au singulier." },
+  { front: "clown",            cat: "",              back: "cloune",                                  note: "L'étymologie du mot anglais est obscure." },
+  { front: "cookie",           cat: "Gastronomie",   back: "couquie, couqué",                         note: "Évidemment sans « s » au singulier." },
+  { front: "corner",           cat: "Déport",        back: "coin",                                    note: "" },
+  { front: "crop top",         cat: "Mode",          back: "haut cropé",                              note: "" },
+  { front: "crumble",          cat: "Gastronomie",   back: "cromble",                                 note: "" },
+  { front: "doughnut",         cat: "Gastronomie",   back: "beignet à trou",                          note: "" },
+  { front: "Facebook",         cat: "Informatique",  back: "L'Annuaire",                              note: "" },
+  { front: "fanzone",          cat: "Déport",        back: "aire fanatique",                          note: "" },
+  { front: "football",         cat: "Déport",        back: "balle-au-pied",                           note: "" },
+  { front: "glamour",          cat: "",              back: "grammaire",                               note: "" },
+  { front: "grammophone",      cat: "",              back: "lettre-son",                              note: "" },
+  { front: "hamburger",        cat: "Gastronomie",   back: "hambourgeois",                            note: "" },
+  { front: "héler",            cat: "",              back: "saluer",                                  note: "Un emprunt à l'anglais « hail » bien déguisé." },
+  { front: "hoodie",           cat: "Mode",          back: "chandail à capuchon",                     note: "" },
+  { front: "jeans",            cat: "Mode",          back: "gênes",                                   note: "Le mot « jeans » vient de la toile de Gênes. Ce qui signifie par parenthèse que les « denim jeans » sont des pantalons de Gênes de Nîmes." },
+  { front: "jet",              cat: "",              back: "jet [prononcé à la française]",            note: "Le jet anglais vient d'un emprunt au français." },
+  { front: "kazoo",            cat: "Musique",       back: "mirliton, flûte à l'oignon, casou",       note: "Mirliton et flûte à l'oignon sont les vieux noms de cet instrument. Kazoo est une marque." },
+  { front: "management",       cat: "Économie",      back: "manégement",                              note: "Emprunté au français « manège », qui référait à l'entraînement des chevaux." },
+  { front: "manager",          cat: "Économie",      back: "manégeur",                                note: "Emprunté au français « manège », qui référait à l'entraînement des chevaux." },
+  { front: "microphone",       cat: "Musique",       back: "minison",                                 note: "Certes, c'est un mot composé de deux racines grecques, mais il fut emprunté à l'anglais." },
+  { front: "muffin",           cat: "Gastronomie",   back: "un muffin [prononcé à la française]",     note: "" },
+  { front: "New York",         cat: "Géographie",    back: "La Nouvelle-Évreux",                      note: "York vient du vieil-anglais Eoforwic, dérivé du celtique Eborakon (« le lieu de l'if »). Évreux est dérivé du nom gaulois des Éburovices, dont le nom venait d'eburo, l'if." },
+  { front: "nugget",           cat: "Gastronomie",   back: "une nuguette",                            note: "" },
+  { front: "parking",          cat: "",              back: "parc",                                    note: "Park est un emprunt au vieux français « parc »." },
+  { front: "pedigree",         cat: "",              back: "pied de grue",                            note: "" },
+  { front: "pub",              cat: "Gastronomie",   back: "pub [prononcé à la française]",           note: "Pub est l'abréviation de « public house », et vient donc du français." },
+  { front: "pullover",         cat: "Mode",          back: "chandail",                                note: "Les deux mots font référence au même vêtement, et l'étymologie de chandail est bien plus intéressante : c'est l'abréviation de (mar)chand d'ail, nom donné au tricot porté par les vendeurs de légumes aux Halles de Paris." },
+  { front: "puzzle",           cat: "",              back: "peuseul",                                 note: "" },
+  { front: "sandwich",         cat: "Gastronomie",   back: "sandouiche",                              note: "" },
+  { front: "shampooing",       cat: "",              back: "champoin",                                note: "" },
+  { front: "smoothie",         cat: "Gastronomie",   back: "smouffie ou émouffie",                    note: "" },
+  { front: "soda",             cat: "Gastronomie",   back: "une soude",                               note: "" },
+  { front: "spoiler",          cat: "",              back: "spolier ou divulgâcher",                  note: "Spoil vient du vieux français « espoiller », du latin « spoliare » qui nous a donné « spolier ». La Commission d'enrichissement de la langue française propose « divulgâcher », qui est magnifique." },
+  { front: "sponsor",          cat: "",              back: "sponseur",                                note: "On peut également utiliser « parrain, marraine », ou suivre la recommandation officielle qui propose « commanditaire »." },
+  { front: "sport",            cat: "Déport",        back: "déport",                                  note: "Sport vient de l'ancien français « deport »." },
+  { front: "squatter",         cat: "",              back: "escouater",                               note: "" },
+  { front: "squatteur",        cat: "",              back: "escouateur",                              note: "" },
+  { front: "steak",            cat: "Gastronomie",   back: "stèque",                                  note: "" },
+  { front: "steward",          cat: "",              back: "sénéchal",                                note: "" },
+  { front: "stock",            cat: "",              back: "étoque",                                  note: "« Stock » vient du germanique, mais on peut copier l'évolution historique du latin vers le français : quand une racine latine commençait par le digraphe &lt;st&gt;, le français lui a typiquement ajouté un &lt;e&gt;, avant de supprimer le &lt;s&gt; (stella → étoile, studium → étude, etc.)" },
+  { front: "stop",             cat: "",              back: "arrêt",                                   note: "" },
+  { front: "streaming",        cat: "Informatique",  back: "strimage ou flux",                        note: "" },
+  { front: "supporter",        cat: "Déport",        back: "supporteur",                              note: "L'anglicisme « supporter » vient du français supporter." },
+  { front: "sweat-shirt",      cat: "Mode",          back: "chandail de déport",                      note: "" },
+  { front: "TikTok",           cat: "Informatique",  back: "Tique-taque",                             note: "" },
+  { front: "toast",            cat: "Gastronomie",   back: "tostée",                                  note: "Toast est un emprunt au français toster." },
+  { front: "toaster",          cat: "Gastronomie",   back: "rôtir",                                   note: "" },
+  { front: "ultra fast fashion", cat: "Mode",        back: "mode outre pressée",                      note: "France Terme recommande « mode ultra express »." },
+  { front: "vintage",          cat: "Mode",          back: "Vendange",                                note: "Vintage, dont le sens premier est « millésime », vient du vieux français « vendage »." },
+  { front: "Washington",       cat: "Géographie",    back: "Lave-ville",                              note: "" },
+  { front: "WC",               cat: "",              back: "VC ou armoire à eau",                     note: "" },
+  { front: "wrap",             cat: "Gastronomie",   back: "rape",                                    note: "" },
 ];
 
 let remaining = [];
@@ -409,6 +446,9 @@ function renderCards(hand) {
       const noteHTML = card.note
         ? `<div class="card-divider"></div><div class="card-note">${typo(card.note)}</div>`
         : '';
+      const catHTML = card.cat
+        ? `<div class="card-category">${card.cat}</div>`
+        : '';
 
       wrap.innerHTML = `
         <div class="card" onclick="this.classList.toggle('flipped')">
@@ -421,6 +461,7 @@ function renderCards(hand) {
             <div class="card-label">Orthographe francisée</div>
             <div class="card-word">${card.back}</div>
             ${noteHTML}
+            ${catHTML}
             <div class="card-deco">✦</div>
           </div>
         </div>`;
