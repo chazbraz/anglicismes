@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Francisation</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --ink: #1a1410;
+    --rust: #8b3a2a;
+    --gold: #c9a84c;
+    --shadow: rgba(26, 20, 16, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--cream);
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(139,58,42,0.06) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    font-family: 'EB Garamond', serif;
+    color: var(--ink);
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 4.5rem;
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .subtitle {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    letter-spacing: 0.18em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+
+  .ornament {
+    margin-top: 0.8rem;
+    color: var(--gold);
+    font-size: 1.4rem;
+    letter-spacing: 0.4em;
+  }
+
+  .intro {
+    max-width: 620px;
+    margin: 1.8rem auto 0;
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--ink);
+    opacity: 0.78;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  /* ── Cards ── */
+
+  .cards {
+    display: flex;
+    gap: 2rem;
+    perspective: 1200px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card-wrap {
+    animation: fadeUp 0.55s ease both;
+  }
+  .card-wrap:nth-child(1) { animation-delay: 0.05s; }
+  .card-wrap:nth-child(2) { animation-delay: 0.15s; }
+  .card-wrap:nth-child(3) { animation-delay: 0.25s; }
+
+  .card {
+    width: 210px;
+    height: 310px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+
+  .card.flipped {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.8rem 1.4rem 2.4rem;
+    background: #faf7f0;
+    box-shadow:
+      0 2px 8px var(--shadow),
+      0 8px 24px var(--shadow),
+      inset 0 1px 0 rgba(255,255,255,0.8);
+    user-select: none;
+    overflow: hidden;
+  }
+
+  .card-face::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 2px;
+    pointer-events: none;
+  }
+
+  .card-front { background: #faf7f0; }
+
+  .card-back {
+    background: var(--ink);
+    transform: rotateY(180deg);
+    border-color: rgba(201,168,76,0.6);
+    justify-content: flex-start;
+    padding-top: 1.8rem;
+  }
+
+  .card-back::before { border-color: rgba(201,168,76,0.3); }
+
+  .card-label {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+    flex-shrink: 0;
+    text-align: center;
+  }
+
+  .card-front .card-label { color: var(--rust); opacity: 0.75; }
+  .card-back  .card-label { color: var(--gold); opacity: 0.85; }
+
+  .card-word {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.25;
+    flex-shrink: 0;
+  }
+
+  .card-front .card-word { color: var(--ink); }
+  .card-back  .card-word { color: var(--cream); }
+
+  .card-divider {
+    width: 28px;
+    height: 1px;
+    background: rgba(201,168,76,0.4);
+    margin: 0.9rem auto;
+    flex-shrink: 0;
+  }
+
+  .card-note {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    text-align: center;
+    color: rgba(245,240,232,0.6);
+    font-style: italic;
+    padding: 0 0.1rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+  }
+
+  .card-deco {
+    position: absolute;
+    bottom: 1.1rem;
+    font-size: 0.85rem;
+    opacity: 0.25;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    flex-shrink: 0;
+  }
+
+  .card:not(.flipped):hover .card-front {
+    box-shadow:
+      0 4px 12px var(--shadow),
+      0 14px 36px var(--shadow),
+      inset 0 1px 0 rgba(255,255,255,0.9);
+  }
+
+  /* ── Footer ── */
+
+  .footer {
+    margin-top: 2.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    animation: fadeUp 0.8s ease 0.4s both;
+  }
+
+  .hint {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--rust);
+    opacity: 0.6;
+    letter-spacing: 0.06em;
+  }
+
+  .refresh-btn {
+    background: none;
+    border: 1px solid rgba(139,58,42,0.35);
+    border-radius: 2px;
+    padding: 0.55rem 1.6rem;
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 0.88rem;
+    letter-spacing: 0.12em;
+    color: var(--rust);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .refresh-btn:hover {
+    background: var(--rust);
+    color: var(--cream);
+    border-color: var(--rust);
+  }
+
+  .refresh-btn svg {
+    width: 13px;
+    height: 13px;
+    fill: currentColor;
+    transition: transform 0.45s ease;
+  }
+
+  .refresh-btn:hover svg {
+    transform: rotate(180deg);
+  }
+
+  .deck-counter {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    opacity: 0.35;
+  }
+
+  /* ── Animations ── */
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Sus aux Anglicismes !/?</h1>
+  <div class="ornament">❧</div>
+  <p class="intro">Quand on critique les anglicismes, sait-on bien ce qu'on critique ? L'évolution du français ? Les avatars d'une forme de snobisme (mot qui est lui-même un anglicisme) ? Des emprunts considérés comme inutiles car faisant doublon avec des mots bien français eux-mêmes ? Et est-on sûr de ce qui est un anglicisme ou non ? Pendant la crise du Covid, « présentiel » avait été beaucoup critiqué par certains du fait de son origine anglaise, alors qu'il n'en est rien. « Digital » a l'air bien français, mais, appliqué au numérique, il vient de l'anglais (« <em>digit</em> » signifie « chiffre » : « digital » renvoie au langage binaire qui permet de faire fonctionner les ordinateurs). Rooftop, business plan, call, sont, eux, bien évidemment issus de l'anglais. Mais quand on commence à s'en plaindre, où doit-on s'arrêter ? Qu'en est-il de budget, sport, redingote, ou bol ?</p><p class="intro"> Quand on parle de la langue — ce qui est une saine activité —, il ne faut jamais oublier que le linguistique n'est jamais loin du politique. S'attacher à la pureté d'une langue est un non-sens. Le français est un processus dynamique qui change dans le temps et l'espace, et rien ni personne ne peut enrayer ce processus évolutif.</p><p class="intro"> Se plaindre des anglicismes implique de se demander pourquoi ils nous dérangent, et pourquoi certains anglicismes sont acceptables (qui se plaint du weekend ou du shampoing ?) et d'autres non.</p>
+<p class="intro">C'est pourquoi ce site vous propose une série de recommandations afin de franciser les emprunts à l'anglais, fondées sur l'orthographe et l'histoire du français et de l'anglais. Certaines sérieuses, d'autres farfelues : la langue appartient à toutes et tous, et en discuter, c'est la faire vivre !</p>
+</header>
+
+<div class="cards" id="cards"></div>
+
+<div class="footer">
+  <p class="hint">Cliquez sur une carte pour la retourner</p>
+  <button class="refresh-btn" onclick="dealHand()">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+    </svg>
+    Nouvelle donne
+  </button>
+  <span class="deck-counter" id="deckCounter"></span>
+</div>
+
+<script>
+const DECK = [
+  { front: "absentéisme",  back: "absentisme",                          note: "" },
+  { front: "bacon",        back: "bacon",                               note: "Prononcé « bas con »." },
+  { front: "bazooka",      back: "basouque",                            note: "La majeure partie des noms en « a » du français sont des emprunts (cinéma, opéra, visa, agenda, sofa, extra, panorama…)" },
+  { front: "bermuda",      back: "bermude",                             note: "La majeure partie des noms en « a » du français sont des emprunts (cinéma, opéra, visa, agenda, sofa, extra, panorama…)" },
+  { front: "bifteck",      back: "rôt de biffe",                        note: "Un vieil anglicisme emprunté dès le XVIIIe siècle sous la forme Beeft Steks." },
+  { front: "bigbang",      back: "boum originel",                       note: "" },
+  { front: "boost",        back: "bouste ou boût",                      note: "" },
+  { front: "brownie",      back: "brounie",                             note: "Évidemment sans « s » au singulier." },
+  { front: "bug",          back: "bogue",                               note: "" },
+  { front: "cafeteria",    back: "caféterie",                           note: "Un emprunt à l'anglais américain tout récent (1939 — « établissement où l'on peut prendre un repas rapide »)." },
+  { front: "cash",         back: "de la casse, payer casse",            note: "Cash vient de l'ancien français casse, qui référait à la caisse d'un marchand." },
+  { front: "challenge",    back: "chalenge",                            note: "Prononcé « chat l'ange ». Un mot pendule : un emprunt à l'anglais qui était lui-même un emprunt au français." },
+  { front: "chip",         back: "chipe",                               note: "Chipe est un vieux mot qui signifiait « petit morceau, rognure d'étoffe » (cf. chiffe, chiffon) et qui a donné « chiper ». Évidemment sans « s » au singulier." },
+  { front: "cookie",       back: "couquie",                             note: "Évidemment sans « s » au singulier." },
+  { front: "crumble",      back: "cromble",                             note: "" },
+  { front: "doughnut",     back: "beignet à trou",                      note: "" },
+  { front: "football",     back: "balle-au-pied",                       note: "" },
+  { front: "glamour",      back: "grammaire",                           note: "" },
+  { front: "grammophone",  back: "lettre-son",                          note: "" },
+  { front: "hamburger",    back: "hambourgeois",                        note: "" },
+  { front: "héler",        back: "saluer",                              note: "Un emprunt à l'anglais « hail » bien déguisé." },
+  { front: "jet",          back: "jet",                                 note: "Prononcé à la française. Le jet anglais vient lui-même d'un emprunt au français." },
+  { front: "kazoo",        back: "mirliton, flûte à l'oignon, casou",   note: "Mirliton et flûte à l'oignon sont les vieux noms de cet instrument. Kazoo est une marque." },
+  { front: "management",   back: "manégement",                          note: "Emprunté au français « manège », qui référait à l'entraînement des chevaux." },
+  { front: "manager",      back: "manégeur",                            note: "Emprunté au français « manège », qui référait à l'entraînement des chevaux." },
+  { front: "microphone",   back: "minison",                             note: "Et pourquoi on ne franciserait pas le grec également, tant qu'on y est ?" },
+  { front: "New York",     back: "La Nouvelle-Évreux",                  note: "York vient du vieil-anglais Eoforwic, dérivé du celtique Eborakon (« le lieu de l'if »). Évreux est dérivé du nom gaulois des Éburovices, dont le nom venait d'eburo, l'if." },
+  { front: "parking",      back: "parc",                                note: "Park est un emprunt au vieux français « parc »." },
+  { front: "Pedigree",     back: "pied de grue",                        note: "" },
+  { front: "pullover",     back: "chandail",                            note: "L'étymologie de chandail est remarquable : abréviation de (mar)chand d'ail, nom donné au tricot porté par les vendeurs de légumes aux Halles de Paris." },
+  { front: "puzzle",       back: "peuseul",                             note: "" },
+  { front: "shampooing",   back: "champoin",                            note: "" },
+  { front: "sponsor",      back: "sponseur",                            note: "On peut également utiliser « parrain, marraine », ou la recommandation officielle : « commanditaire »." },
+  { front: "sport",        back: "déport",                              note: "Sport vient de l'ancien français « deport »." },
+  { front: "squatter",     back: "escouater",                           note: "" },
+  { front: "squatteur",    back: "escouateur",                          note: "" },
+  { front: "steak",        back: "stèque",                              note: "" },
+  { front: "steward",      back: "sénéchal",                            note: "" },
+  { front: "supporter",    back: "supporteur",                          note: "L'anglicisme « supporter » vient du français supporter." },
+  { front: "sweat-shirt",  back: "chandail de déport",                  note: "" },
+  { front: "toast",        back: "tostée",                              note: "Toast est un emprunt au français toster." },
+  { front: "toaster",      back: "rôtir",                               note: "" },
+  { front: "Washington",   back: "Lave-ville",                          note: "" },
+];
+
+let remaining = [];
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// Narrow no-break space (U+202F) around guillemets, and before ? ! : ;
+const NNBS = '\u00A0';
+function typo(str) {
+  return str
+    .replace(/«\s*/g, '«' + NNBS)
+    .replace(/\s*»/g, NNBS + '»')
+    .replace(/\s+([?!:;])/g, NNBS + '$1');
+}
+
+function dealHand() {
+  if (remaining.length < 3) {
+    remaining = shuffle(DECK);
+  }
+  const hand = remaining.splice(0, 3);
+  renderCards(hand);
+  updateCounter();
+}
+
+function updateCounter() {
+  const seen = DECK.length - remaining.length;
+  document.getElementById('deckCounter').textContent =
+    `${seen} / ${DECK.length} cartes vues`;
+}
+
+function renderCards(hand) {
+  const container = document.getElementById('cards');
+
+  container.style.opacity = '0';
+  container.style.transform = 'translateY(8px)';
+  container.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+
+  setTimeout(() => {
+    container.innerHTML = '';
+
+    hand.forEach((card, i) => {
+      const wrap = document.createElement('div');
+      wrap.className = 'card-wrap';
+      wrap.style.animationDelay = `${i * 0.1}s`;
+
+      const noteHTML = card.note
+        ? `<div class="card-divider"></div><div class="card-note">${typo(card.note)}</div>`
+        : '';
+
+      wrap.innerHTML = `
+        <div class="card" onclick="this.classList.toggle('flipped')">
+          <div class="card-face card-front">
+            <div class="card-label">Anglicisme</div>
+            <div class="card-word">${card.front}</div>
+            <div class="card-deco">✦</div>
+          </div>
+          <div class="card-face card-back">
+            <div class="card-label">Orthographe francisée</div>
+            <div class="card-word">${card.back}</div>
+            ${noteHTML}
+            <div class="card-deco">✦</div>
+          </div>
+        </div>`;
+
+      container.appendChild(wrap);
+    });
+
+    container.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+    container.style.opacity = '1';
+    container.style.transform = 'translateY(0)';
+  }, 220);
+}
+
+dealHand();
+</script>
+</body>
+</html>
