@@ -291,11 +291,23 @@
     margin-top: 2rem;
     font-family: 'EB Garamond', serif;
     font-style: italic;
-    font-size: 0.82rem;
-    letter-spacing: 0.1em;
-    color: var(--ink);
-    opacity: 0.35;
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    color: var(--rust);
+    opacity: 0.85;
     text-align: center;
+    border: 1px solid rgba(139,58,42,0.25);
+    border-radius: 2px;
+    padding: 0.6rem 1.4rem;
+    display: inline-block;
+  }
+
+  .intro-note {
+    font-size: 0.88rem;
+    opacity: 0.55;
+    border-top: 1px solid rgba(139,58,42,0.2);
+    padding-top: 1rem;
+    margin-top: 0.5rem;
   }
   /* ── Animations ── */
 
@@ -315,11 +327,12 @@
 <header>
   <h1>Le Francisateur</h1>
   <div class="ornament">❧</div>
-  <p class="intro">Quand on critique les anglicismes, sait-on bien toujours ce qu'on critique ? Le métissage du français ? La perte de vitesse de la culture française face à la déferlante américaine ? Une certaine forme de snobisme (mot qui est lui-même un anglicisme) ? Des emprunts considérés comme inutiles car faisant doublon avec des mots bien français eux-mêmes ? Et est-on sûr de ce qui est un anglicisme ou non ? Pendant la crise du Covid, « présentiel » avait été beaucoup critiqué par certains du fait de son origine anglaise, alors qu'il n'en est rien. « Digital » a l'air bien français, mais, appliqué au numérique, il vient de l'anglais (« <em>digit</em> » signifie « chiffre » : « digital » renvoie au langage binaire qui permet de faire fonctionner les ordinateurs). « Rooftop », « business plan », « call », sont, eux, bien évidemment issus de l'anglais. Mais quand on commence à s'en plaindre, où doit-on s'arrêter ? Qui exclure, qui accepter ? Que faire de « budget », « sport », « sud », ou « bol » ?</p>
-<p class="intro">Quand on débat du français — ce qui est une saine activité —, il ne faut jamais oublier que le linguistique n'est jamais loin du politique. S'attacher à la pureté d'une langue est un non-sens. Le français est un processus dynamique qui change dans le temps et l'espace, et rien ni personne ne peut enrayer ce processus évolutif.</p>
+  <p class="intro">Quand on critique les anglicismes, sait-on bien toujours ce qu'on critique ? Le métissage du français ? La perte de vitesse de la culture française face à la déferlante américaine ? Une certaine forme de snobisme (mot qui est lui-même un anglicisme) ? Des emprunts considérés comme inutiles car faisant doublon avec des mots bien français eux-mêmes ? Et est-on sûr de ce qui est un anglicisme ou non ? Pendant la crise du Covid, « présentiel » avait été beaucoup critiqué par certains du fait de sa supposée origine anglaise, alors qu'il est parfaitement français. « Rooftop », « business plan », « call », sont, eux, bien évidemment issus de l'anglais. Mais quand on commence à s'en plaindre, où doit-on s'arrêter ? Qui exclure, qui accepter ? Que faire de « sport », « sud », ou « bol », si francisés qu'on en oublierait leur origine ?</p>
+<p class="intro">Quand on débat du français — ce qui est une saine activité —, il convient de garder à l'esprit que le linguistique n'est jamais loin du politique : sous couvert de défendre une langue, ce sont souvent les notions de communauté, de pouvoir, de légitimité à occuper l'espace discursif public que l'on interroge, ou que l'on refuse d'interroger. Sur le plan purement linguistique, s'attacher à la pureté d'une langue est un non-sens. Le français est un processus dynamique qui change dans le temps et l'espace, et rien ni personne ne peut enrayer ce processus évolutif.</p>
 <p class="intro">Le français n'est évidemment pas un cas à part. L'anglais lui-même compte bon nombre d'opposants à la présence de mots d'origine non-germanique dans son lexique. David Cowley imagine par exemple dans son ouvrage <em>How We'd Talk if the English Had Won in 1066</em> (2020) à quoi l'anglais expurgé de tous les mots d'origine française ressemblerait, recréant joyeusement la supposée pureté germanique d'avant l'an mil.</p>
 <p class="intro">De ce côté de la Manche, se plaindre des anglicismes implique de se demander pourquoi ils nous dérangent, et pourquoi certains sont acceptables (y a-t-il quelqu'un pour se plaindre de « clown » ou « week-end » ?) et d'autres non.</p>
-<p class="intro">C'est pour réfléchir à ces questions que le Franciseur vous propose une série de recommandations afin de franciser les emprunts à l'anglais. Celles-ci sont fondées sur l'étymologie des mots, l'orthographe du français et le système de mutations phonologiques qui a gouverné l'évolution du français à travers les siècles. Certaines suggestions sont sérieuses, d'autres farfelues : la langue appartient à toutes et tous, et en discuter, c'est la faire vivre !</p>
+<p class="intro">C'est pour réfléchir à ces questions que le Francisateur vous propose une série de recommandations afin de franciser les emprunts à l'anglais. Celles-ci sont fondées sur l'étymologie des mots, l'orthographe du français et le système de mutations phonologiques qui a gouverné l'évolution du français à travers les siècles. Certaines suggestions sont sérieuses, d'autres farfelues : la langue appartient à toutes et tous, et en discuter, c'est la faire vivre !</p>
+<p class="intro intro-note">(Il s'agit ici de francisations cosmétiques, devant permettre d'intégrer des emprunts à l'idée que l'on se fait de ce à quoi le français devrait ressembler. Pour la néologisation à proprement parler, la Commission d'enrichissement de la langue française et la délégation générale à la langue française et aux langues de France font un travail passionnant.)</p>
 </header>
 
 <div class="cards" id="cards"></div>
@@ -618,7 +631,9 @@ function renderCards(hand) {
             <div class="card-deco">✦</div>
           </div>
         </div>
+<div style="text-align:center">
 <p class="disclaimer">Page en cours de construction.</p>
+</div>
 `;
 
       container.appendChild(wrap);
